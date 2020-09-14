@@ -1,0 +1,7 @@
+spring:
+  devtools:
+    restart:
+      enabled: true
+  thymeleaf:
+    prefix: /templates/
+    suffix: .html
