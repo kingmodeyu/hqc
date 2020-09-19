@@ -1,6 +1,7 @@
 package com.hqc.user.controller;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ public class HqcDepartmentUserController {
         ModelAndView mav=new ModelAndView();
         mav.addObject("message", "SpringBoot 大爷你好！");
         mav.setViewName("helloWorld");
+        mav.setStatus(HttpStatus.ACCEPTED);
         return mav;
     }
 
