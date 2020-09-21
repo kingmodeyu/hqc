@@ -2,6 +2,9 @@ spring:
   devtools:
     restart:
       enabled: true
-  thymeleaf:
-    prefix: /templates/
-    suffix: .html
+  freemarker:
+    suffix: .ftl
+    template-loader-path: classpath:/templates/
+    charset: utf-8
+
+
