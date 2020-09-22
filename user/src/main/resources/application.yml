@@ -6,5 +6,11 @@ spring:
     suffix: .ftl
     template-loader-path: classpath:/templates/
     charset: utf-8
+  jackson:
+    # 常用请求与响应自动转下划线，空值字段不传输
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_null
+
+
 
 

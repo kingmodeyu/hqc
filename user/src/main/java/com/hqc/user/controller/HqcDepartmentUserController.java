@@ -1,6 +1,7 @@
 package com.hqc.user.controller;
 
 
+import com.hqc.user.entity.HqcDepartmentUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,13 @@ public class HqcDepartmentUserController {
     @RequestMapping("/test")
     public String user(Model model) {
         model.addAttribute("welcome","hello fishpro");
+        return "index";
+    }
+
+    @RequestMapping("/addUser")
+    public String addUser(@RequestBody HqcDepartmentUser user) {
+        //model.addAttribute("welcome","hello fishpro");
+
         return "index";
     }
 
