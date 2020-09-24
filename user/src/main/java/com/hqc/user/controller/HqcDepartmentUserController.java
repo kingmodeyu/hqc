@@ -49,4 +49,21 @@ public class HqcDepartmentUserController {
         return "index";
     }
 
+    @RequestMapping("/updUser")
+    public String updUser(@RequestBody HqcDepartmentUser user) {
+        //model.addAttribute("welcome","hello fishpro");
+        Wrapper<HqcDepartmentUser> queryWrapper = new QueryWrapper<HqcDepartmentUser>(user);
+        hqcDepartmentUserService.update(queryWrapper);
+        return "index";
+    }
+
+    @RequestMapping("/queryUser")
+    public String queryUser(@RequestBody HqcDepartmentUser user) {
+        //model.addAttribute("welcome","hello fishpro");
+        Wrapper<HqcDepartmentUser> queryWrapper = new QueryWrapper<HqcDepartmentUser>(user);
+        hqcDepartmentUserService.list(queryWrapper);
+        return "index";
+    }
+
+
 }
