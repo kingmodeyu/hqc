@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 /**
  * <p>
  * 部门员工信息表 前端控制器
@@ -58,11 +60,12 @@ public class HqcDepartmentUserController {
     }
 
     @RequestMapping("/queryUser")
-    public String queryUser(@RequestBody HqcDepartmentUser user) {
+    public List<HqcDepartmentUser> queryUser(@RequestBody HqcDepartmentUser user) {
         //model.addAttribute("welcome","hello fishpro");
         Wrapper<HqcDepartmentUser> queryWrapper = new QueryWrapper<HqcDepartmentUser>(user);
-        hqcDepartmentUserService.list(queryWrapper);
-        return "index";
+        List<HqcDepartmentUser> list = hqcDepartmentUserService.list(queryWrapper);
+
+        return list;
     }
 
 
