@@ -3,6 +3,7 @@ package com.hqc.user.controller;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.hqc.user.entity.HqcDepartmentUser;
 import com.hqc.user.service.IHqcDepartmentUserService;
 import com.hqc.user.service.impl.HqcDepartmentUserServiceImpl;
@@ -38,14 +39,12 @@ public class HqcDepartmentUserController {
 
     @RequestMapping("/addUser")
     public String addUser(@RequestBody HqcDepartmentUser user) {
-        //model.addAttribute("welcome","hello fishpro");
         hqcDepartmentUserService.save(user);
         return "index";
     }
 
     @RequestMapping("/delUser")
     public String delUser(@RequestBody HqcDepartmentUser user) {
-        //model.addAttribute("welcome","hello fishpro");
         Wrapper<HqcDepartmentUser> queryWrapper = new QueryWrapper<HqcDepartmentUser>(user);
         hqcDepartmentUserService.remove(queryWrapper);
         return "index";
@@ -53,9 +52,10 @@ public class HqcDepartmentUserController {
 
     @RequestMapping("/updUser")
     public String updUser(@RequestBody HqcDepartmentUser user) {
-        //model.addAttribute("welcome","hello fishpro");
-        Wrapper<HqcDepartmentUser> queryWrapper = new QueryWrapper<HqcDepartmentUser>(user);
-        hqcDepartmentUserService.update(queryWrapper);
+        UpdateWrapper<HqcDepartmentUser>updateWrapperWrapper = new UpdateWrapper<HqcDepartmentUser>();
+        updateWrapperWrapper.eq("departmentId",user.getDepartmentId());
+
+        hqcDepartmentUserService.update(user,updateWrapperWrapper);
         return "index";
     }
 

@@ -11,6 +11,13 @@ spring:
     property-naming-strategy: SNAKE_CASE
     default-property-inclusion: non_null
 
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: 自己的数据库连接
+    username: 账号
+    password: 密码
 
 
 
+server:
+  port: 8082
