@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import java.util.List;
 
@@ -60,12 +61,14 @@ public class HqcDepartmentUserController {
     }
 
     @RequestMapping("/queryUser")
-    public List<HqcDepartmentUser> queryUser(@RequestBody HqcDepartmentUser user) {
+    public ModelAndView queryUser(@RequestBody HqcDepartmentUser user) {
         //model.addAttribute("welcome","hello fishpro");
         Wrapper<HqcDepartmentUser> queryWrapper = new QueryWrapper<HqcDepartmentUser>(user);
         List<HqcDepartmentUser> list = hqcDepartmentUserService.list(queryWrapper);
 
-        return list;
+        ModelAndView view = new ModelAndView();
+        view.addObject("list",list);
+        return view;
     }
 
 
