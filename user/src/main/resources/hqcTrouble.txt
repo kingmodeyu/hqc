@@ -1,0 +1,3 @@
+1.lombok会将对象属性大写字母转小写 在之前加_（测试时尤其要注意）
+2.lombok注解 开发工具不加上lombok插件 无法使用get set方法（所以为什么mybatis-plus要强行绑定lombok？？？）
+3.freemark与spring boot集成除了需要freemark依赖还需要spring-boot-starter-freemarker依赖（找了好久，感谢思否某大神）
