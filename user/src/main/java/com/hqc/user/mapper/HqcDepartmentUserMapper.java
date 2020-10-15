@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author kingmodeyu
- * @since 2020-09-17
+ * @since 2020-10-15
  */
 public interface HqcDepartmentUserMapper extends BaseMapper<HqcDepartmentUser> {
 

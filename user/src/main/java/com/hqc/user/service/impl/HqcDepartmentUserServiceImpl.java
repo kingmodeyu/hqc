@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author kingmodeyu
- * @since 2020-09-17
+ * @since 2020-10-15
  */
 @Service
 public class HqcDepartmentUserServiceImpl extends ServiceImpl<HqcDepartmentUserMapper, HqcDepartmentUser> implements IHqcDepartmentUserService {

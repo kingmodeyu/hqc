@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 部门员工信息表 前端控制器
+ * 员工菜单权限表 前端控制器
  * </p>
  *
  * @author kingmodeyu
  * @since 2020-10-15
  */
 @RestController
-@RequestMapping("/user/hqc-department-user")
-public class HqcDepartmentUserController {
+@RequestMapping("/user/hqc-user-menu")
+public class HqcUserMenuController {
 
 }
