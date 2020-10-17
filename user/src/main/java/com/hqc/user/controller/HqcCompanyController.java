@@ -30,20 +30,20 @@ public class HqcCompanyController {
     @Autowired
     private IHqcCompanyService hqcCompanyService;
 
-    @RequestMapping("/addUser")
+    @RequestMapping("/addCompany")
     public String addUser(@RequestBody HqcCompany company) {
         hqcCompanyService.save(company);
         return "index";
     }
 
-    @RequestMapping("/delUser")
+    @RequestMapping("/delCompany")
     public String delUser(@RequestBody HqcCompany company) {
         Wrapper<HqcCompany> queryWrapper = new QueryWrapper<HqcCompany>(company);
         hqcCompanyService.remove(queryWrapper);
         return "index";
     }
 
-    @RequestMapping("/updUser")
+    @RequestMapping("/updCompany")
     public String updUser(@RequestBody HqcCompany company) {
         UpdateWrapper<HqcCompany>updateWrapperWrapper = new UpdateWrapper<HqcCompany>();
         updateWrapperWrapper.eq("departmentId",company.getCompanyId());
@@ -52,7 +52,7 @@ public class HqcCompanyController {
         return "index";
     }
 
-    @RequestMapping("/queryUser")
+    @RequestMapping("/queryCompany")
     public ModelAndView queryUser(@RequestBody HqcCompany company) {
         //model.addAttribute("welcome","hello fishpro");
         Wrapper<HqcCompany> queryWrapper = new QueryWrapper<HqcCompany>(company);
