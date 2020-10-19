@@ -46,7 +46,7 @@ public class HqcCompanyController {
     @RequestMapping("/updCompany")
     public String updUser(@RequestBody HqcCompany company) {
         UpdateWrapper<HqcCompany>updateWrapperWrapper = new UpdateWrapper<HqcCompany>();
-        updateWrapperWrapper.eq("departmentId",company.getCompanyId());
+        updateWrapperWrapper.eq("companyId",company.getCompanyId());
 
         hqcCompanyService.update(company,updateWrapperWrapper);
         return "index";
