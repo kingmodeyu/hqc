@@ -7,6 +7,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.hqc.user.entity.HqcMenuGroup;
 import com.hqc.user.service.IHqcMenuGroupService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +34,16 @@ public class HqcMenuGroupController {
     @Autowired
     private IHqcMenuGroupService hqcMenuGroupService;
 
+    @ApiOperation(value = "新增菜单组")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = String.class) })
     @RequestMapping("/addMenuGroup")
-    public String addmenuGroup(@RequestBody HqcMenuGroup menuGroup) {
+    public String addMenuGroup(@RequestBody HqcMenuGroup menuGroup) {
         hqcMenuGroupService.save(menuGroup);
         return "index";
     }
 
+    @ApiOperation(value = "删除菜单组")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = String.class) })
     @RequestMapping("/delMenuGroup")
     public String delmenuGroup(@RequestBody HqcMenuGroup menuGroup) {
         Wrapper<HqcMenuGroup> queryWrapper = new QueryWrapper<HqcMenuGroup>(menuGroup);
@@ -44,6 +51,8 @@ public class HqcMenuGroupController {
         return "index";
     }
 
+    @ApiOperation(value = "更新菜单组")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = String.class) })
     @RequestMapping("/updMenuGroup")
     public String updmenuGroup(@RequestBody HqcMenuGroup menuGroup) {
         UpdateWrapper<HqcMenuGroup> updateWrapperWrapper = new UpdateWrapper<HqcMenuGroup>();
@@ -53,6 +62,8 @@ public class HqcMenuGroupController {
         return "index";
     }
 
+    @ApiOperation(value = "查询菜单组")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = ModelAndView.class) })
     @RequestMapping("/queryMenuGroup")
     public ModelAndView querymenuGroup(@RequestBody HqcMenuGroup menuGroup) {
         Wrapper<HqcMenuGroup> queryWrapper = new QueryWrapper<HqcMenuGroup>(menuGroup);

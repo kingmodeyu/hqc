@@ -6,6 +6,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.hqc.user.entity.HqcRoleMenu;
 import com.hqc.user.service.IHqcRoleMenuService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,21 +33,27 @@ public class HqcRoleMenuController {
     @Autowired
     private IHqcRoleMenuService hqcRoleMenuService;
 
+    @ApiOperation(value = "新增角色菜单")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = String.class) })
     @RequestMapping("/addRoleMenu")
-    public String addmenuGroup(@RequestBody HqcRoleMenu roleMenu) {
+    public String addRoleMenu(@RequestBody HqcRoleMenu roleMenu) {
         hqcRoleMenuService.save(roleMenu);
         return "index";
     }
 
+    @ApiOperation(value = "删除角色菜单")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = String.class) })
     @RequestMapping("/delRoleMenu")
-    public String delmenuGroup(@RequestBody HqcRoleMenu roleMenu) {
+    public String delRoleMenu(@RequestBody HqcRoleMenu roleMenu) {
         Wrapper<HqcRoleMenu> queryWrapper = new QueryWrapper<HqcRoleMenu>(roleMenu);
         hqcRoleMenuService.remove(queryWrapper);
         return "index";
     }
 
+    @ApiOperation(value = "更新角色菜单")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = String.class) })
     @RequestMapping("/updRoleMenu")
-    public String updmenuGroup(@RequestBody HqcRoleMenu roleMenu) {
+    public String updRoleMenu(@RequestBody HqcRoleMenu roleMenu) {
         UpdateWrapper<HqcRoleMenu> updateWrapperWrapper = new UpdateWrapper<HqcRoleMenu>();
         updateWrapperWrapper.eq("menuId",roleMenu.getRoleId());
 
@@ -52,8 +61,10 @@ public class HqcRoleMenuController {
         return "index";
     }
 
+    @ApiOperation(value = "查询角色菜单")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = ModelAndView.class) })
     @RequestMapping("/queryRoleMenu")
-    public ModelAndView querymenuGroup(@RequestBody HqcRoleMenu roleMenu) {
+    public ModelAndView queryRoleMenu(@RequestBody HqcRoleMenu roleMenu) {
         Wrapper<HqcRoleMenu> queryWrapper = new QueryWrapper<HqcRoleMenu>(roleMenu);
         List<HqcRoleMenu> list = hqcRoleMenuService.list(queryWrapper);
 

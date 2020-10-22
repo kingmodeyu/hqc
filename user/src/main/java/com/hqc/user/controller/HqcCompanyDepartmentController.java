@@ -6,6 +6,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.hqc.user.entity.HqcCompanyDepartment;
 import com.hqc.user.service.IHqcCompanyDepartmentService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,21 +33,27 @@ public class HqcCompanyDepartmentController {
     @Autowired
     private IHqcCompanyDepartmentService hqcCompanyDepartmentService;
 
+    @ApiOperation(value = "新增部门")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = String.class) })
     @RequestMapping("/addDepartment")
-    public String addUser(@RequestBody HqcCompanyDepartment department) {
+    public String addDepartment(@RequestBody HqcCompanyDepartment department) {
         hqcCompanyDepartmentService.save(department);
         return "index";
     }
 
+    @ApiOperation(value = "删除部门")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = String.class) })
     @RequestMapping("/delDepartment")
-    public String delUser(@RequestBody HqcCompanyDepartment department) {
+    public String delDepartment(@RequestBody HqcCompanyDepartment department) {
         Wrapper<HqcCompanyDepartment> queryWrapper = new QueryWrapper<HqcCompanyDepartment>(department);
         hqcCompanyDepartmentService.remove(queryWrapper);
         return "index";
     }
 
+    @ApiOperation(value = "更新部门")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = String.class) })
     @RequestMapping("/updDepartment")
-    public String updUser(@RequestBody HqcCompanyDepartment department) {
+    public String updDepartment(@RequestBody HqcCompanyDepartment department) {
         UpdateWrapper<HqcCompanyDepartment> updateWrapperWrapper = new UpdateWrapper<HqcCompanyDepartment>();
         updateWrapperWrapper.eq("departmentId",department.getDepartmentId());
 
@@ -52,8 +61,10 @@ public class HqcCompanyDepartmentController {
         return "index";
     }
 
+    @ApiOperation(value = "查询部门")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = ModelAndView.class) })
     @RequestMapping("/queryDepartment")
-    public ModelAndView queryUser(@RequestBody HqcCompanyDepartment department) {
+    public ModelAndView queryDepartment(@RequestBody HqcCompanyDepartment department) {
         //model.addAttribute("welcome","hello fishpro");
         Wrapper<HqcCompanyDepartment> queryWrapper = new QueryWrapper<HqcCompanyDepartment>(department);
         List<HqcCompanyDepartment> list = hqcCompanyDepartmentService.list(queryWrapper);
