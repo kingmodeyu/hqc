@@ -11,16 +11,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private HqcDepartmentUserServiceImpl hqcDepartmentUserService;
+  /*  @Autowired
+    private HqcDepartmentUserServiceImpl hqcDepartmentUserService;*/
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(hqcDepartmentUserService).passwordEncoder(){
-        }
+
     }
 
 }

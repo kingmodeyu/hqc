@@ -30,36 +30,6 @@ import java.util.List;
  * @since 2020-10-15
  */
 @Service
-public class HqcDepartmentUserServiceImpl extends ServiceImpl<HqcDepartmentUserMapper, HqcDepartmentUser> implements IHqcDepartmentUserService, UserDetailsService {
+public class HqcDepartmentUserServiceImpl extends ServiceImpl<HqcDepartmentUserMapper, HqcDepartmentUser> {
 
-    @Autowired
-    private IHqcUserRoleService userRoleService;
-
-    @Autowired
-    private IHqcRoleService roleService;
-
-    @Override
-    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-
-        HqcDepartmentUser hqcDepartmentUser = this.getById(userId);
-        // 判断用户是否存在
-        if(hqcDepartmentUser == null) {
-            throw new UsernameNotFoundException("用户名不存在");
-        }
-
-        // 添加权限
-        HqcUserRole role = new HqcUserRole();
-        role.setUserId(Integer.parseInt(userId));
-        Wrapper<HqcUserRole> queryWrapper = new QueryWrapper<HqcUserRole>(role);
-        List<HqcUserRole> roles = userRoleService.list(queryWrapper);
-        for (HqcUserRole hqcUserRole : roles) {
-            HqcRole hqcRole = roleService.getById(hqcUserRole.getRoleId());
-            ((ArrayList<GrantedAuthority>) authorities).add(new SimpleGrantedAuthority(hqcRole.getRoleName()));
-        }
-
-
-        // 返回UserDetails实现类
-        return new User(hqcDepartmentUser.getUserName(), hqcDepartmentUser.getUserPassword(), authorities);
-    }
 }
