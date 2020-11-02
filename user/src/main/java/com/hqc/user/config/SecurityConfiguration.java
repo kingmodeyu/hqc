@@ -1,6 +1,7 @@
 package com.hqc.user.config;
 
 import com.hqc.user.service.IHqcDepartmentUserService;
+import com.hqc.user.service.IHqcRolePermissionService;
 import com.hqc.user.service.IHqcUserPermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private IHqcUserPermissionService userPermissionService;
+
+    @Autowired
+    private IHqcRolePermissionService rolePermissionService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
