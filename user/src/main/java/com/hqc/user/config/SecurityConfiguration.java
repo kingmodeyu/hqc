@@ -49,11 +49,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // 如果有允许匿名的url，填在下面
-//                .antMatchers().permitAll()
+                .antMatchers("/swagger-ui.html").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // 设置登陆页
-                .formLogin().loginPage("/login.html")
+                .formLogin().loginPage("/user/hqc-department-user/login")
                 // 设置登陆成功页
                 .defaultSuccessUrl("/").permitAll()
                 // 自定义登陆用户名和密码参数，默认为username和password

@@ -33,6 +33,14 @@ public class HqcDepartmentUserController {
     @Autowired
     private IHqcDepartmentUserService hqcDepartmentUserService;
 
+    @ApiOperation(value = "用户登陆")
+    @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = String.class) })
+    @RequestMapping("/login")
+    public ModelAndView login(HqcDepartmentUser user) {
+        ModelAndView mv = new ModelAndView("login");
+        return mv;
+    }
+
     @ApiOperation(value = "新增部门用户")
     @ApiResponses({ @ApiResponse(code = 200, message = "OK", response = String.class) })
     @RequestMapping("/addUser")
