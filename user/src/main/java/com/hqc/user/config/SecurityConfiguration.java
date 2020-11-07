@@ -49,7 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // 如果有允许匿名的url，填在下面
-                .antMatchers("/swagger-ui.html").permitAll()
+                .antMatchers("/swagger-ui.html,addUser").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // 设置登陆页
