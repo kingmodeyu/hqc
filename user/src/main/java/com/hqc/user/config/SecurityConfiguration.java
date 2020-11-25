@@ -53,7 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 // 设置登陆页
-                .formLogin().loginPage("/user/hqc-department-user/login")
+                .formLogin().loginPage("/user/hqc-department-user/login,")
                 // 设置登陆成功页
                 .defaultSuccessUrl("/home.html").permitAll()
                 // 自定义登陆用户名和密码参数，默认为username和password
